@@ -16,11 +16,7 @@ $(function () {
       setInterval(main, 1000 / frameRate);
     }
     //create walls
-    createPlatform(-50, -50, canvas.width + 100, 50); //top
-    createPlatform(-50, canvas.height - 10, canvas.width + 100, 200); //right
-    createPlatform(-50, -50, 50, canvas.height + 500); //bottom
-    createPlatform(canvas.width, -50, 50, canvas.height + 100);
-
+   
     /**
      * Uncomment the loops below to add a "grid" to your platformer game's screen
      * The grid will place both horizontal and vertical platforms incremented 100 pixels apart
@@ -38,12 +34,22 @@ $(function () {
     /////////////////////////////////////////////////
     //////////ONLY CHANGE BELOW THIS POINT///////////
     /////////////////////////////////////////////////
+    createPlatform(20, 530, 800, 15); 
+    createPlatform(300, 250, 100 + 10, 15); //right
+    createPlatform(200, 150, 100, 15 + 0); //bottom
+    createPlatform(400, 400, 100, 10);
+    createPlatform(500, 310, 200, 10); // short but wide platform located 500 pixels from the left of the screen and 300 pixels from the top of the screen
 
-    createPlatform(500, 300, 200, 20); // short but wide platform located 500 pixels from the left of the screen and 300 pixels from the top of the screen
+
+
+   
     createCollectable("steve", 500, 300, 20, 0.5); // creates a "steve" collectible at the coordinates (500, 300), falling with a high gravity of 20, and bouncing with 50% bounce
     createCollectable("grace", 500, 300); // creates a "grace" collectible at the coordinates (500, 300), falling with default gravity and bouncing with default bounce %
-    createCannon("left", 600, 1000); // cannon on left wall, 600px down, shooting once per second
+    createCollectable("grace", 200, 130); // creates a "grace" collectible at the coordinates (500, 300), falling with default gravity and bouncing with default bounce %
 
+    createCannon("left", 600, 1000); // cannon on left wall, 600px down, shooting once per second
+    createCannon("right", 500, 900); // cannon on left wall, 600px down, shooting once per second
+    createCannon("left", 200, 900); // cannon on left wall, 600px down, shooting once per second
     /////////////////////////////////////////////////
     //////////ONLY CHANGE ABOVE THIS POINT///////////
     /////////////////////////////////////////////////

@@ -40,7 +40,7 @@ If Runtime is not already installed, then you can install it manually. To do so,
 - `cd projects`
 - `git clone https://github.com/operationspark/runtime`
 - `cd runtime`
-- `rm -rf .git\*`
+- `rm -rf .git*`
 - `npm install -g opspark`
 - `bower install`
 - `cd ../..`

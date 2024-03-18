@@ -10,13 +10,31 @@ function runProgram(){
   // Constant Variables
   var FRAME_RATE = 60;
   var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
-  
-  // Game Item Objects
 
+  var speedX = 0
+  var speedY = 0
+  var positionX = 0
+  var positionY = 0
+
+  // Game Item Objects
+  var KEY = {
+    ENTER: 13,
+    LEFT: 13,
+    UP: 13,
+    RIGHT: 13,
+    DOWN: 13
+  };
+
+  var walker = {
+    x: 0,
+    y: 0,
+    sx: 0,
+    sy: 0,
+  }
 
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
-  $(document).on('eventType', handleEvent);                           // change 'eventType' to the type of event you want to handle
+  $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
 
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
@@ -27,14 +45,27 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    
-
+    respositionGameItem();
+    redrawGameItem();
+    walker.positionX = speedX
   }
   
   /* 
   Called in response to events.
   */
-  function handleEvent(event) {
+  function handleKeyDown(event) {
+    if (event.which === KEY.LEFT) {
+      speedX = -5;
+
+    } else if (event.which === KEY.UP) {
+      speedY = 5;
+
+    } else if (event.which === KEY.RIGHT) {
+      speedX = 5;
+
+    } else if (event.which === KEY.DOWN) {
+      speedY = -5;
+    }
 
   }
 
@@ -42,7 +73,17 @@ function runProgram(){
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
 
-  
+  function respositionGameItem() {
+    
+  }
+
+  function redrawGameItem() {
+    $("#walker").css("left", positionX);
+    $("#walker").css("right", positionX);
+    $("#walker").css("up", positionY);
+    $("#walker").css("down", positionY);
+  }
+
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
